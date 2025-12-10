@@ -27,10 +27,10 @@ builder.Services.AddCors(options =>
         policy =>
         {
             policy
+                .AllowAnyOrigin()
                 .AllowAnyHeader()
                 .AllowAnyMethod()
-                .AllowCredentials() // Ha küldesz cookie-t vagy authot
-                .WithOrigins("http://localhost:3000"); // IDE A TE FRONTEND URL-JÉT!!!
+                .AllowCredentials();
         });
 });
 var app = builder.Build();
@@ -48,5 +48,6 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
 
 
