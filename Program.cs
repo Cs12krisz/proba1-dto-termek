@@ -4,6 +4,19 @@ using proba1.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+string MyAllowSpecificorigins = "AllowAll";
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(MyAllowSpecificorigins,
+
+            policy =>
+            {
+                policy.WithOrigins("*")
+                .AllowAnyHeader()
+                .AllowAnyMethod();
+            });
+});
 
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
@@ -28,6 +41,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors(MyAllowSpecificorigins);
 
 app.UseHttpsRedirection();
 
