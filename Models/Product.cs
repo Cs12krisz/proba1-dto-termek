@@ -8,7 +8,6 @@ namespace proba1.Models
         public string? Name { get; set; }
         public decimal Price { get; set; }
 
-        [JsonIgnore]
         public ICollection<CartItem>? CartItems { get; set; }
     }
 }
